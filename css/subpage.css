@@ -1,0 +1,714 @@
+@charset "utf-8";
+
+
+.navtap{
+    background-color: #6d6e70;
+}
+.navtap ul{
+    width: 1200px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+    margin: 0 auto;
+}
+.navtap ul li{
+    margin: 3px 7px;
+    color: #eee;
+}
+#container{
+    width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+}
+#container h3{
+    text-align: center;
+    font-size: 40px;
+    margin: 40px;
+}
+#container .des_baggage ul{
+    width: 1190px;
+    border-top: 2px solid #ddd;
+    border-bottom: 2px solid #ddd;
+    margin: 40px auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#container .des_baggage li{
+    font-size: 13px;
+    list-style-type: circle;
+}
+#sel_group{
+    display: flex;
+    justify-content: center;
+}
+#sel_group div{
+    width: 400px;
+    height: 100px;
+    background-color: #ddd;
+    padding: 20px;
+    box-sizing: border-box;
+    position: relative;
+    margin: 40px 5px;
+}
+#sel_group label{
+    position: absolute;
+    top: 10px;
+    font-size: 28px;
+    color: #6d6e70;
+}
+#sel_group input{
+    width: 100%;
+    height: 100%;
+    background-color: #ddd;
+    border:1px solid #ddd;
+    padding: 0;
+}
+#sel_group span{
+    font-size:28px;
+    color: #6d6e70;
+    display: block;
+}
+#txtAirport{
+    font-size: 28px;
+    color: #6d6e70;
+}
+
+/* 팝업 조절 */
+#intplan{
+    width: 800px;
+    height:700px;
+    overflow: auto;
+    position: fixed;
+    top:50%;
+    left: 50%;
+    transform: translate(-400px,-330px);
+    display: none;
+    background-color: #fff;
+    box-shadow: 0 0 0 10000px rgba(0,0,0,0.7);
+    
+}
+
+#sel_airport h3{
+    background-color: #6d6e70;
+    color: #eee;
+    font-size: 30px;
+    padding: 10px;
+}
+#closebtn{
+    position: absolute;
+    background-color: #6d6e70;
+    color: #fff;
+    top: 20px;
+    right: 20px;
+    border: none;
+    font-size: 20px;
+}
+#int_airportcontainer{
+    padding-left: 10px;
+    background-color: #fff;
+    padding: 30px;
+    box-sizing: border-box;
+}
+#int_airportcontainer h3{
+    font-size: 23px;
+    padding-top: 10px;
+}
+#list_nation{
+    border-bottom:1px solid #ddd ;
+    padding: 0 10px;
+    margin: 10px 0;
+}
+.li_nation{
+    background-color: #e8e8e8;
+}
+.li_nation li{
+    padding: 10px;
+}
+.li_nation li:hover{
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #333;
+}
+#citybox{
+    padding: 0 10px;
+    margin: 10px 0;
+    
+}
+#citybox ul li{
+    padding: 10px;
+}
+.active{
+    background-color: #7D7064;
+    color: #eee;
+}
+.li_city{
+    display: none;
+    overflow: auto;
+    height: 225px;
+}
+.li_city li{
+    background-color: #e8e8e8;
+    margin: 1px 0;
+    display: flex;
+    justify-content: space-between;
+}
+.li_city li:hover{
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #333;
+}
+.li_city li:hover > input{
+    background-color: #fff;
+}
+.li_city li input{
+    font-size: 18px;
+    border: none;
+    display: inline-block;
+    width: 100%;
+}
+.li_city li input:nth-child(2){
+    text-align: right;
+}
+.apname{
+    opacity: 0.7;
+}
+/* --------------------------------------------- */
+/* --------------------------------------------- */
+
+#intplan2{
+    width: 800px;
+    height:700px;
+    overflow: auto;
+    position: fixed;
+    top:50%;
+    left: 50%;
+    transform: translate(-400px,-330px);
+    display: none;
+    background-color: #fff;
+    box-shadow: 0 0 0 10000px rgba(0,0,0,0.3);
+}
+
+#sel_airport2 h3{
+    background-color: #6d6e70;
+    color: #eee;
+    font-size: 30px;
+    padding: 10px;
+}
+#closebtn2{
+    position: absolute;
+    background-color: #6d6e70;
+    color: #fff;
+    top: 20px;
+    right: 20px;
+    border: none;
+    font-size: 20px;
+}
+#int_airportcontainer2{
+    padding-left: 10px;
+    background-color: #fff;
+    padding: 30px;
+    box-sizing: border-box;
+}
+#int_airportcontainer2 h3{
+    font-size: 23px;
+    padding-top: 10px;
+}
+#list_nation2{
+    border-bottom:1px solid #ddd ;
+    padding: 0 10px;
+    margin: 10px 0;
+}
+#citybox2{
+    padding: 0 10px;
+    margin: 10px 0;
+}
+#citybox2 ul li{
+    padding: 10px;
+}
+
+
+/* 팝업 조절 */
+/* 좌석 등급 */
+#gradebox h4{
+    font-size: 30px;
+    margin: 20px 0 10px 0;
+    padding-left: 5px;
+}
+#seatgrade{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+#seatgrade li{
+    width: 390px;
+    height: 60px;
+    background-color: #ddd;
+    margin: 0 5px;
+    text-align: center;
+    font-size: 20px;
+    box-sizing: border-box;
+    padding: 15px;
+    position: relative;
+}
+#gradebox ul li:hover{
+    color: #333;
+    border: 1px solid #333;
+    background-color: #fff !important;
+}
+#seatgrade img{
+    width: 25px;
+    height: 25px;
+    display: none;
+    margin: 0;
+    position: absolute;
+    left: 34%;
+}
+.addBorder{
+    border: 1px solid #e60405;
+    font-weight: 700;
+}
+/* 좌석 등급 */
+
+/* 멤버쉽 */
+#membership h4{
+    padding-left: 5px;
+    font-size: 30px;
+    margin: 20px 0 10px 0;
+}
+#membertier{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+#membertier li{
+    width: 390px;
+    height: 60px;
+    background-color: #ddd;
+    margin: 0 5px;
+    text-align: center;
+    font-size: 20px;
+    box-sizing: border-box;
+    padding: 15px;
+    position: relative;
+}
+#membership ul li:hover{
+    color: #333;
+    border: 1px solid #333;
+    background-color: #fff !important;
+}
+#membertier img{
+    width: 25px;
+    height: 25px;
+    display: none;
+    margin: 0;
+    position: absolute;
+    left: 34%;
+}
+.addBorder{
+    border: 1px solid #e60405;
+    background-color: #fff;
+    font-weight: 700;
+}
+/* 멤버쉽 */
+
+/* 요금 조회 */
+#search_pricebtn{
+    text-align: center;
+    margin: 40px auto;
+}
+#search_pricebtn button{
+    width: 160px;
+    height: 50px;
+    background-color: #e60405;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+#search_pricebtn button:hover{
+    cursor: pointer;
+    background-color: rgba(139, 0, 0, 0.8);
+}
+
+/* 요금 조회 */
+/* 조회 결과 */
+.result{
+    width: 1100px;
+    display: flex;
+    margin: 40px auto;
+}
+.result2{
+    width: 1100px;
+    display: flex;
+    margin: 40px auto;
+}
+.bagimgbox{
+    margin-left: 5px;
+    background-color: #ddd;
+    width: 400px;
+    text-align: center;
+    padding: 40px 0;
+}
+.bagimgbox p{
+    font-weight: 900;
+}
+.bagcomentbox{
+    width: 800px;
+    border: 1px solid #ddd;
+    padding: 40px;
+    margin-right: 5px;
+}
+.bagcomentbox p:nth-of-type(1){
+    font-size: 28px;
+}
+.bagcomentbox p:nth-child(1) span{
+    color: #ff0000;
+}
+.bagcomentbox p:nth-of-type(2){
+    display:inline-block;
+    font-size: 20px;
+    font-weight: 300;
+}
+.plusinfo{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-image: url("../img/info.png");
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+.plusinfo:hover > .infopop{
+    display: block;
+}
+.infopop{
+    width: 400px;
+    height: 100px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    position: absolute;
+    box-sizing: border-box;
+    padding: 35px 20px;
+    top: -40px;
+    right: -420px;
+    box-shadow: 0 3px 3px rgba(0,0,0,0.6);
+    display: none;
+}
+.infopop span{
+    font-size: 20px;
+}
+.infopop::before{
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 15px;
+    top: 40px;
+    right:398px;
+    background-image: url('../img/tootip_left.png');
+}
+
+img[alt="lugage"]{
+    transform: scale(0.8);
+}
+#case_1{
+    display: none;
+}
+#case_2{
+    display: none;
+}
+#case_2 img[alt="bag"]{
+    transform: scale(1.2);
+}
+#case_3{
+    display: none;
+}
+#case_4 img[alt="bag"]{
+    transform: scale(1.2);
+}
+#case_5 img[alt="small"]{
+    transform: scale(0.5);
+}
+#case_4{
+    display: none;
+}
+#case_5{
+    display: none;
+}
+#case_6{
+    display: none;
+}
+#case_7{
+    display: none;
+}
+#case_8{
+    display: none;
+}
+
+/* 조회 결과 */
+
+/* 달력 */
+.calender{
+    width: 1000px;
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: #fff;
+    transform: translate(-50%, -50%);
+    border: 1px solid #666;
+    border-radius: 6px;
+    display: none;
+    box-shadow: 0 0 0 10000px rgba(0,0,0,0.3);
+}
+.calender .cal_nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 78px;
+    width: 100%;
+}
+
+.calender .cal_nav .year-month {
+    width: 300px;
+    text-align: center;
+    line-height: 1;
+}
+
+.calender .cal_nav .go-prev,
+.calender .cal_nav .go-next {
+    display: block;
+    width: 50px;
+    height: 78px;
+    font-size: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calender .cal_nav .go-prev::before,
+.calender .cal_nav .go-next::before {
+    content: "";
+    display: block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #000;
+    border-width: 3px 3px 0 0;
+    transition: border 0.1s;
+}
+.calender .cal_nav .btn_X{
+    font-size: 25px;
+    color: #666;
+    position: absolute;
+    right: 10px;
+    opacity: 0.3;
+}
+
+.calender .cal_nav .go-prev:hover::before,
+.calender .cal_nav .go-next:hover::before {
+    border-color: #ed2a61;
+}
+
+.calender .cal_nav .go-prev::before {
+    transform: rotate(-135deg);
+}
+
+.calender .cal_nav .go-next::before {
+    transform: rotate(45deg);
+}
+
+.calender .cal_wrap {
+    padding-top: 40px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.calender .cal_wrap .week {
+    display: flex;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.calender .cal_wrap::after {
+    top: 368px;
+}
+
+.calender .cal_wrap .day{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(100% / 7);
+    text-align: left;
+    color: #999;
+    font-size: 16px;
+    text-align: center;
+    border-radius:5px;
+    border: none;
+    background-color: #fff;
+}
+.calender .cal_wrap .today{
+    background-color: rgba(240, 50, 50, 0.8);
+    color: #333;
+}
+.calender .cal_wrap .dates {
+    display: flex;
+    flex-flow: wrap;
+    height: 290px;
+}
+
+.calender .cal_wrap .day:nth-child(7n -1) {
+    color: #3c6ffa;
+}
+
+.calender .cal_wrap .day:nth-child(7n) {
+    color: #ed2a61;
+}
+
+.calender .cal_wrap .day.disable {
+    color: #ddd;
+}
+.calender .cal_wrap .dates .day:hover{
+    background: rgb(242 242 242);
+}
+/* 달력 */
+
+#flight_info{
+    width: 100%;
+    height: 100px;
+    background-color: #7D7064;
+    margin: 40px 5px;
+    text-align: center;
+    display: none;
+}
+.sta_flight, .end_flight{
+    font-size: 30px;
+    padding: 10px;
+    display: inline-block;
+}
+.grd_flight{
+    font-size: 27px;
+    color: rgba(255,9,9,0.9);
+}
+#flight_info p span{
+    color: #ff3333;
+    font-weight: 700;
+}
+.sta_flight::after{
+    content: '';
+    background-image: url('../img/btn_L_arrow.png');
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-left:30px;
+}
+.end_flight::after{
+    content: '|';
+    font-size: 20px;
+    transform: translateY(-5px);
+    margin: 0 10px;
+    display: inline-block;
+}
+#bagfeesearch{
+    width: 1180px;
+    margin: 0 auto;
+}
+#bagfeesearch h4{
+    font-size: 30px;
+}
+#bagfeesearch p{
+    margin: 20px 0;
+}
+#bagfeesearch p span{
+    color: #ff0000;
+}
+.bagimgparent{
+    height: 200px;
+}
+.bagimgparent .bagimg{
+    background-image: url(../img/bagage3.png);
+    width: 100%;
+    height: 60%;
+    display: block;
+    background-size: contain;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}
+#feewrap{
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+    text-align: center;
+}
+
+tbody tr th{
+    border-right: 1px solid #ddd;
+    width: 60%;
+}
+tbody tr:not(:nth-child(3)) td{
+    border-bottom: 1px solid #ddd;
+    width: 50%;
+    
+}
+tbody ul{
+    width: 80%;
+    display: flex;
+    align-items: center;
+    background-color: #ddd;
+    margin: 0 auto;
+}
+tbody ul li{
+    width: 200px;
+    border: 1px solid #fff;
+    text-align: center;
+    flex-grow: 1;
+    font-size: 16px;
+    padding: 5px;
+}
+tbody ul li:hover{
+    background-color: #fff;
+    border:1px solid #333;
+}
+.bag_sum_fee{
+    font-size: 20px;
+    display: flex;
+    justify-content: flex-end;
+    margin: 0 90px;
+}
+.bag_sum_fee em{
+  margin-left: 10px;
+}
+#caution{
+    margin: 40px auto;
+    padding: 20px;
+    width: 1000px;
+    background-color: #eee;
+}
+#caution h3{
+    font-size: 25px;
+    margin: 5px 0;
+}
+#caution p{
+    font: 15px;
+    margin: 10px 0;
+}
+#caution li{
+    font-size: 13px;
+    list-style-type: square;
+    margin:10px 0 10px 20px;
+}
+#caution li a{
+    font-size: 13px;
+}
+#caution li a:hover{
+    color:#e60405
+}

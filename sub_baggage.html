@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>baggageCalculator</title>
+    <link rel="icon" href="img/tltle.png">
+
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/subpage.css">
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <header>
+        <div id="logo">
+            <a href="index.html"><img src="img/korea_airlogo.png" alt="대한항공 로고"></a>
+        </div>
+
+        <ul id="nav">
+            <li><a href="sub_pass.html">예약</a></li>
+            <li><a href="sub_baggage.html">여행 준비</a></li>
+            <li><a href="sub_plane.html">항공기 정보</a></li>
+            <li><a href="sub_pass.html">서비스</a></li>
+        </ul>
+
+        <ul id="hdncon">
+            <li><a href="index.html">로그인</a></li>
+            <li><a href="index.html"><img src="img/alarm.png" alt="알림"></a></li>
+            <li><a href="index.html"><img src="img/call.png" alt="고객센터"></a></li>
+        </ul>
+        <div id="hoverwrap">
+            <div class="hoverbox">
+                <h4></h4>
+                <ul class="hovertap1">
+                   
+                </ul>
+            </div>
+            <div class="hoverbox">
+                <h4></h4>
+                <ul class="hovertap2">
+                </ul>
+            </div>
+            <div class="hoverbox">
+                <h4></h4>
+                <ul class="hovertap3">
+                   
+                </ul>
+            </div>
+            <div class="hoverbox">
+                <h4></h4>
+                <ul class="hovertap4">
+                </ul>
+            </div>
+        </div>
+    </header>
+    
+    <div class="navtap">
+        <ul>
+            <li>HOME</li>
+            <li>|</li>
+            <li>여행 준비</li>
+            <li>|</li>
+            <li>수하물 계산기</li>
+        </ul>
+    </div>
+
+    <div id="container">
+        <h3>수하물 계산기</h3>
+        <div class="des_baggage">
+            <ul>
+                <li>무료수하물 허용량을 알아보고, 초과 요금을 사전에 조회할 수 있습니다.</li>
+                <li>여행 시작 전, 구간과 좌석 및 회원등급에 따른 나의 무료수하물과 초과 요금을 조회해보세요</li>
+                <li>조회한 정보는 오직 대한항공 편명과 대한항공으로 운항하는 여정에만 적용됩니다.</li>
+                <li>스카이패스 회원등급에 따라 차이가 있을 수 있습니다.</li>
+            </ul>
+        </div>
+        <div id="sel_group">
+            <div id="select_1" onclick="openpop()">
+                <label id="startAirport">출발지</label>
+                <input type="hidden" id="txtAirport" disabled="disabled" autocomplete="off">
+            </div>
+            <div id="select_2" onclick="openpop_2()">
+                <label id="endAirport">도착지</label>
+                <input type="hidden" id="txtAirport2" title="도착지" disabled="disabled" autocomplete="off">
+            </div>
+            <div id="select_3" onclick="open_cal()">
+                <label id="day_calender">날짜 선택</label>
+                <input type="text" id="txtcalender" title="날짜 선택" disabled="disabled" autocomplete="off">
+            </div>
+        </div>
+    
+        <div id="gradebox">
+            <h4>좌석 등급</h4>
+            <input id="seat_grade" type="hidden" value="">
+            <ul id="seatgrade">
+                <li class="economy"><img class="chk" src="img/checked.png" alt="체크"><span>이코노미</span></li>
+                <li class="business"><img class="chk" src="img/checked.png" alt="체크"><span>비즈니스</span></li>
+                <li class="suite"><img class="chk" src="img/checked.png" alt="체크"><span>스 위 트</span></li>
+            </ul>
+        </div>
+
+        <div id="membership">
+            <h4>스카이패스</h4>
+            <input id="tier_grade" type="hidden" value="">
+            <ul id="membertier">
+                <li class="silver"><img class="chk" src="img/checked.png" alt="체크"><span>실 버</span></li>
+                <li class="gold"><img class="chk" src="img/checked.png" alt="체크"><span>골 드</span></li>
+                <li class="nonmember"><img class="chk" src="img/checked.png" alt="체크"><span>비 회 원</span></li>
+            </ul>
+        </div>
+
+        <div id="search_pricebtn">
+            <button onclick="resultSearchGrade()">조회</button>
+        </div>
+
+        <div id="flight_info">
+            <h4>
+                <span class="sta_flight"></span>
+                <span class="end_flight"></span>
+                <span class="grd_flight"></span>
+            </h4>
+            <p><span class="filght_member"></span>회원의 수하물 요금 조회 결과는 아래와 같습니다.</p>
+        
+        </div>
+        <div id="case_1">
+            <div class="result">
+                <div class="bagimgbox">
+                    <img src="img/bagage1.png" alt="">
+                    <br><br>
+                    <p>23kg 이하</p>
+                    <p>삼변의 합 158cm 이내</p>
+                </div>
+                <div class="bagcomentbox">
+                    <p>1인당 <span>1개</span>의 수하물을 무료로 부치실 수 있습니다.</p>
+                    <br>
+                    <p>23kg 1개를 더 보내고 싶다면</p>
+                    <div class="plusinfo">
+                        <div class="infopop">
+                            <span>KRW 80,000 또는 마일리지 8,000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="result2">
+                <div class="bagimgbox">
+                    <img src="img/lugage.png" alt="lugage">
+                    <br><br>
+                    <p>10kg 이하</p>
+                    <p>삼변의 합 115cm 이내</p>
+                </div>
+                <div class="bagcomentbox">
+                    <p><span>이코노미 클래스</span>는 1인당 10kg 이내의 짐 1개까지 기내로 가져가실 수 있습니다.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="case_2">
+            <div class="result">
+                <div class="bagimgbox">
+                    <img src="img/bagage1.png" alt="bag">
+                    <br><br>
+                    <p>32kg 이하</p>
+                    <p>삼변의 합 158cm 이내</p>
+                </div>
+                <div class="bagcomentbox">
+                    <p>1인당 <span>1개</span>의 수하물을 무료로 부치실 수 있습니다.</p>
+                    <br>
+                    <p>23kg 1개를 더 보내고 싶다면</p>
+                    <div class="plusinfo">
+                        <div class="infopop">
+                            <span>KRW 80,000 또는 마일리지 8,000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="result2">
+                <div class="bagimgbox">
+                    <img src="img/lugage.png" alt="lugage">
+                    <br><br>
+                    <p>10kg 이하</p>
+                    <p>삼변의 합 115cm 이내</p>
+                </div>
+                <div class="bagcomentbox">
+                    <p><span>이코노미 클래스</span>는 1인당 10kg 이내의 짐 1개까지 기내로 가져가실 수 있습니다.</p>
+                </div>
+            </div>
+        </div>
+       
+        <div id="case_4">
+            <div class="result">
+                <div class="bagimgbox">
+                    <img src="img/bagage1.png" alt="bag">
+                    <img src="img/bagage1.png" alt="bag">
+                    <br><br>
+                    <p>개당 32kg 이하</p>
+                    <p>삼변의 합 158cm 이내</p>
+                </div>
+                <div class="bagcomentbox">
+                    <p>1인당 <span>2개</span>의 수하물을 무료로 부치실 수 있습니다.</p>
+                    <br>
+                    <p>23kg 1개를 더 보내고 싶다면</p>
+                    <div class="plusinfo">
+                        <div class="infopop">
+                            <span>KRW 80,000 또는 마일리지 8,000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="result2">
+                <div class="bagimgbox">
+                    <img src="img/lugage.png" alt="lugage">
+                    <img src="img/lugage.png" alt="lugage">
+                    <br><br>
+                    <p>10kg 이하</p>
+                    <p>삼변의 합 115cm 이내</p>
+                </div>
+                <div class="bagcomentbox">
+                    <p><span>비지니스 클래스</span>는 1인당 10kg 이내의 짐 2개까지 기내로 가져가실 수 있습니다.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="case_5">
+            <div class="result">
+                <div class="bagimgbox">
+                    <img src="img/bagage1.png" alt="small">
+                    <img src="img/bagage1.png" alt="bag">
+                    <img src="img/bagage1.png" alt="bag">
+                    <br><br>
+                    <p>9kg 이하 1개 및 32kg 이하 2개</p>
+                    <p>삼변의 합 158cm 이내</p>
+                </div>
+                <div class="bagcomentbox">
+                    <p>1인당 <span>3개</span>의 수하물을 무료로 부치실 수 있습니다.</p>
+                    <br>
+                    <p>23kg 1개를 더 보내고 싶다면</p>
+                    <div class="plusinfo">
+                        <div class="infopop">
+                            <span>KRW 80,000 또는 마일리지 8,000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="result2">
+                <div class="bagimgbox">
+                    <img src="img/lugage.png" alt="lugage">
+                    <img src="img/lugage.png" alt="lugage">
+                    <br><br>
+                    <p>10kg 이하</p>
+                    <p>삼변의 합 115cm 이내</p>
+                </div>
+                <div class="bagcomentbox">
+                    <p><span>비지니스 클래스</span>는 1인당 10kg 이내의 짐 2개까지 기내로 가져가실 수 있습니다.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div id="case_7">
+            <div class="result">
+                <div class="bagimgbox">
+                    <img src="img/bagage1.png" alt="bag">
+                    <img src="img/bagage1.png" alt="bag">
+                    <br><br>
+                    <p>개당 32kg 이하</p>
+                    <p>삼변의 합 158cm 이내</p>
+                </div>
+                <div class="bagcomentbox">
+                    <p>1인당 <span>2개</span>의 수하물을 무료로 부치실 수 있습니다.</p>
+                    <br>
+                    <p>23kg 1개를 더 보내고 싶다면</p>
+                    <div class="plusinfo">
+                        <div class="infopop">
+                            <span>KRW 80,000 또는 마일리지 8,000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="result2">
+                <div class="bagimgbox">
+                    <img src="img/lugage.png" alt="lugage">
+                    <img src="img/lugage.png" alt="lugage">
+                    <br><br>
+                    <p>10kg 이하</p>
+                    <p>삼변의 합 115cm 이내</p>
+                </div>
+                <div class="bagcomentbox">
+                    <p><span>비지니스 스위트 클래스</span>는 1인당 10kg 이내의 짐 2개까지 기내로 가져가실 수 있습니다.</p>
+                </div>
+            </div>
+        </div>
+        <div id="case_8">
+            <div class="result">
+                <div class="bagimgbox">
+                    <img src="img/bagage1.png" alt="small">
+                    <img src="img/bagage1.png" alt="bag">
+                    <img src="img/bagage1.png" alt="bag">
+                    <br><br>
+                    <p>개당 32kg 이하</p>
+                    <p>삼변의 합 158cm 이내</p>
+                </div>
+                <div class="bagcomentbox">
+                    <p>1인당 <span>3개</span>의 수하물을 무료로 부치실 수 있습니다.</p>
+                    <br>
+                    <p>23kg 1개를 더 보내고 싶다면</p>
+                    <div class="plusinfo">
+                        <div class="infopop">
+                            <span>KRW 80,000 또는 마일리지 8,000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="result2">
+                <div class="bagimgbox">
+                    <img src="img/lugage.png" alt="lugage">
+                    <img src="img/lugage.png" alt="lugage">
+                    <br><br>
+                    <p>10kg 이하</p>
+                    <p>삼변의 합 115cm 이내</p>
+                </div>
+                <div class="bagcomentbox">
+                    <p><span>비지니스 스위트 클래스</span>는 1인당 10kg 이내의 짐 2개까지 기내로 가져가실 수 있습니다.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--수하물 요금 조회  -->
+    <div id="bagfeesearch">
+        <h4>수하물 요금 조회</h4>
+        <p><span>1인 기준 위탁 예정인 모든 수하물 개수</span>와 무게 및 규격을 입력하시면 요금을 조회할 수 있습니다.</p>
+        <div id="feewrap">
+            <table class="table_1"> 
+                <tbody>
+                    <tr>
+                        <th rowspan="3" scope="rowgroup">
+                            <div class="bagimgparent">
+                                <span class="bagimg"></span>
+                                <p>Bag 1</p>
+                            </div>
+                        </th>
+                        <td>
+                            무게
+                        </td>
+                        <td>
+                            <ul class="bagWeight">
+                                <li>24kg 이하</li>
+                                <li>24kg~28kg</li>
+                                <li>29kg~32kg</li>
+                                <li>33kg~40kg</li>
+                            </ul>    
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            부피
+                        </td>
+                        <td>
+                            <ul class="bagHeight">
+                                <li>가로+세로+높이 158cm 이하</li>
+                                <li>가로+세로+높이 159cm 이상</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            예상 요금
+                        </td>
+                        <td>
+                            <div class="bag_sum_fee">
+                                <span class="currency">KRW</span>
+                                <em class="feeinput"></em>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+<!--수하물 요금 조회 -------------------------->
+    <div id="caution">
+        <h3>유의사항</h3>
+        <p>수하물계산기의 조회 내용은 본 항공사만을 탑승하실 때를 기준으로 안내드리고 있습니다.<br>
+            타 항공사와 결합된 여정의 경우 첫 출발 여정의 운항 항공사에 정확한 규정을 문의하여 주십시오.</p>
+        <ul>
+            <li>초과수하물 요금을 마일리지로 공제할 경우 회원님 본인 마일리지로만 가능합니다. (양도 및 합산 불가) <a href="">자세히보기></a></li>
+            <li>회원등급은 탑승일에도 자격이 유효한 경우에만 해당 규정이 적용됩니다.</li>
+            <li>수하물 계산기의 조회 결과보다 자세한 규정 및 특수수하물, 운송제한물품 등은 아래 각 링크에서 정보를 확인하여 주십시오.<br>
+                <a href="">무료수하물</a> | <a href="">초과수하물</a> | <a href="">특수수하물</a> | <a href="">운송제한물품</a></li>
+            <li>부쳐야 할 짐이 1인당 4개를 초과할 경우 사전에 대한항공 예약센터로 문의하여 주시기 바랍니다. (항공기 운항사정 및 지역에 따라 위탁 가능 개수가 제한될 수 있습니다.)</li>
+        </ul>
+    </div>
+<!------------------------ 팝업창 시작 ------------------------->
+    <div id="intplan">
+        <div id="sel_airport">
+            <h3>공항 선택</h3>
+            <button id="closebtn" onclick="closepopup()">X</button>
+        </div>
+        <div id="int_airportcontainer">
+            <h3>국제선</h3>
+            <div id="list_nation">
+                <ul class="li_nation">
+                    <li>한국</li>
+                    <li>미국/USA</li>
+                    <li>동북아시아</li>
+                    <li>동남아시아</li>
+                    <li>유럽</li>
+                </ul>
+            </div>
+            <div id="list_city">
+                <h3>도시</h3>
+                <div id="citybox">
+                    <ul class="li_city" >
+                        <li>
+                            <input type="text" class="cname" value="서울/인천" disabled>
+                            <input type="text" class="apname" value="ICN" disabled>
+                        </li>
+                        <li>
+                            <input type="text" class="cname" value="서울/김포" disabled>
+                            <input type="text" class="apname" value="GMP" disabled>
+                        </li>
+                    </ul>
+                    <ul class="li_city na">
+                        <li>
+                            <input type="text" class="cname" value="뉴욕" disabled>
+                            <input type="text" class="apname" value="JFK" disabled>
+                        </li>
+                        <li>
+                            <input type="text" class="cname" value="로스엔젤레스" disabled>
+                            <input type="text" class="apname" value="LAX" disabled>
+                        </li>
+                        <li>
+                            <input type="text" class="cname" value="샌프란시스코" disabled>
+                            <input type="text" class="apname" value="SFO" disabled>
+                        </li>
+                    </ul>
+                    <ul class="li_city ena" >
+                        <li>
+                            <input type="text" class="cname" value="도쿄/나리타" disabled>
+                            <input type="text" class="apname" value="NRT" disabled>
+                        </li>
+                        <li>
+                            <input type="text" class="cname" value="도쿄/하네다" disabled>
+                            <input type="text" class="apname" value="HND" disabled>
+                        </li>
+                        <li>
+                            <input type="text" class="cname" value="오사카" disabled>
+                            <input type="text" class="apname" value="KIX" disabled>
+                        </li>
+                        <li>
+                            <input type="text" class="cname" value="삿포로" disabled>
+                            <input type="text" class="apname" value="CTS" disabled>
+                        </li>
+                        <li>
+                            <input type="text" class="cname" value="오키나와" disabled>
+                            <input type="text" class="apname" value="OKA" disabled>
+                        </li>
+                        <li>
+                            <input type="text" class="cname" value="베이징" disabled>
+                            <input type="text" class="apname" value="PEK" disabled>
+                        </li>
+                        <li>
+                            <input type="text" class="cname" value="상하이" disabled>
+                            <input type="text" class="apname" value="SHA" disabled>
+                        </li>
+                    </ul>
+                    <ul class="li_city esa">
+                        <li>
+                            <input type="text" class="cname" value="싱가포르" disabled>
+                            <input type="text" class="apname" value="SIN" disabled>
+                        </li>
+                        <li>
+                            <input type="text" class="cname" value="방콕" disabled>
+                            <input type="text" class="apname" value="BKK" disabled>
+                        </li>
+                        <li>
+                            <input type="text" class="cname" value="다낭" disabled>
+                            <input type="text" class="apname" value="DAO" disabled>
+                        </li>
+                        <li>
+                            <input type="text" class="cname" value="하노이" disabled>
+                            <input type="text" class="apname" value="HAN" disabled>
+                        </li>
+                    </ul>
+                    <ul class="li_city eu">
+                        <li>
+                            <input type="text" class="cname" value="런던" disabled>
+                            <input type="text" class="apname" value="LHR" disabled>
+                        </li>
+                        <li>
+                            <input type="text" class="cname" value="파리" disabled>
+                            <input type="text" class="apname" value="CDG" disabled>
+                        </li>
+                        <li>
+                            <input type="text" class="cname" value="프랑크푸르트" disabled>
+                            <input type="text" class="apname" value="FRA" disabled>
+                        </li>
+                        <li>
+                            <input type="text" class="cname" value="이스탄불" disabled>
+                            <input type="text" class="apname" value="IST" disabled>
+                        </li>
+                        <li>
+                            <input type="text" class="cname" value="부다페스트" disabled>
+                            <input type="text" class="apname" value="BUD" disabled>
+                        </li>
+                        <li>
+                            <input type="text" class="cname" value="프라하" disabled>
+                            <input type="text" class="apname" value="PRG" disabled>
+                        </li>
+                        <li>
+                            <input type="text" class="cname" value="로마" disabled>
+                            <input type="text" class="apname" value="FCO" disabled>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="intplan2">
+        <div id="sel_airport2">
+            <h3>공항 선택</h3>
+            <button id="closebtn2" onclick="closepopup()">X</button>
+        </div>
+        <div id="int_airportcontainer2">
+            <h3>국제선</h3>
+            <div id="list_nation2">
+                <ul class="li_nation nation_2">
+                    <li>한국</li>
+                    <li>미국/USA</li>
+                    <li>동북아시아</li>
+                    <li>동남아시아</li>
+                    <li>유럽</li>
+                </ul>
+            </div>
+            <div id="list_city2">
+                <h3>도시</h3>
+                <div id="citybox2">
+                    <ul class="li_city">
+                        <li>
+                            <input type="text" class="cname" value="서울/인천" disabled>
+                            <input type="text" class="apname" value="ICN" disabled>
+                        </li>
+                        <li>
+                            <input type="text" class="cname" value="서울/김포" disabled>
+                            <input type="text" class="apname" value="GMP" disabled>
+                        </li>
+                    </ul>
+                    <ul class="li_city na">
+                        <li>
+                            <input type="text" class="cname" value="뉴욕" disabled>
+                            <input type="text" class="apname" value="JFK" disabled>
+                        </li>
+                        <li>
+                            <input type="text" class="cname" value="로스엔젤레스" disabled>
+                            <input type="text" class="apname" value="LAX" disabled>
+                        </li>
+                        <li>
+                            <input type="text" class="cname" value="샌프란시스코" disabled>
+                            <input type="text" class="apname" value="SFO" disabled>
+                        </li>
+                    </ul>
+                    <ul class="li_city ena" >
+                        <li>
+                            <input type="text" class="cname" value="도쿄/나리타" disabled>
+                            <input type="text" class="apname" value="NRT" disabled>
+                        </li>
+                        <li>
+                            <input type="text" class="cname" value="도쿄/하네다" disabled>
+                            <input type="text" class="apname" value="HND" disabled>
+                        </li>
+                        <li>
+                            <input type="text" class="cname" value="오사카" disabled>
+                            <input type="text" class="apname" value="KIX" disabled>
+                        </li>
+                        <li>
+                            <input type="text" class="cname" value="삿포로" disabled>
+                            <input type="text" class="apname" value="CTS" disabled>
+                        </li>
+                        <li>
+                            <input type="text" class="cname" value="오키나와" disabled>
+                            <input type="text" class="apname" value="OKA" disabled>
+                        </li>
+                        <li>
+                            <input type="text" class="cname" value="베이징" disabled>
+                            <input type="text" class="apname" value="PEK" disabled>
+                        </li>
+                        <li>
+                            <input type="text" class="cname" value="상하이" disabled>
+                            <input type="text" class="apname" value="SHA" disabled>
+                        </li>
+                    </ul>
+                    <ul class="li_city esa">
+                        <li>
+                            <input type="text" class="cname" value="싱가포르" disabled>
+                            <input type="text" class="apname" value="SIN" disabled>
+                        </li>
+                        <li>
+                            <input type="text" class="cname" value="방콕" disabled>
+                            <input type="text" class="apname" value="BKK" disabled>
+                        </li>
+                        <li>
+                            <input type="text" class="cname" value="다낭" disabled>
+                            <input type="text" class="apname" value="DAO" disabled>
+                        </li>
+                        <li>
+                            <input type="text" class="cname" value="하노이" disabled>
+                            <input type="text" class="apname" value="HAN" disabled>
+                        </li>
+                    </ul>
+                    <ul class="li_city eu">
+                        <li>
+                            <input type="text" class="cname" value="런던" disabled>
+                            <input type="text" class="apname" value="LHR" disabled>
+                        </li>
+                        <li>
+                            <input type="text" class="cname" value="파리" disabled>
+                            <input type="text" class="apname" value="CDG" disabled>
+                        </li>
+                        <li>
+                            <input type="text" class="cname" value="프랑크푸르트" disabled>
+                            <input type="text" class="apname" value="FRA" disabled>
+                        </li>
+                        <li>
+                            <input type="text" class="cname" value="이스탄불" disabled>
+                            <input type="text" class="apname" value="IST" disabled>
+                        </li>
+                        <li>
+                            <input type="text" class="cname" value="부다페스트" disabled>
+                            <input type="text" class="apname" value="BUD" disabled>
+                        </li>
+                        <li>
+                            <input type="text" class="cname" value="프라하" disabled>
+                            <input type="text" class="apname" value="PRG" disabled>
+                        </li>
+                        <li>
+                            <input type="text" class="cname" value="로마" disabled>
+                            <input type="text" class="apname" value="FCO" disabled>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- 팝업창 끝 -->
+<!-- 달력 팝업 -->
+    <div class="calender">
+        <div class="cal_nav">
+            <a href="#" class="btn_cal go-prev">prev</a>
+            <div class="year_month"></div>
+            <a href="#" class="btn_cal go-next">next</a>
+            <a href="#" class="btn_X" onclick="close_cal()">X</a>
+        </div>
+        <div class="cal_wrap">
+            <div class="week">
+               <div class="day">MON</div>
+               <div class="day">TUE</div>
+               <div class="day">WED</div>
+               <div class="day">THU</div>
+               <div class="day">FRI</div>
+               <div class="day">SAT</div>
+               <div class="day">SUN</div>
+            </div>
+            <div class="dates"></div>
+        </div>
+    </div>
+
+<!-- 달력 팝업 끝 -->
+
+    <footer>
+        <div id="footerbox">
+            <div class="footbox">
+                <h4>회사 소개</h4>
+                <ul>
+                   <li><a href="index.html">대한항공에 대하여</a></li>
+                   <li><a href="index.html">기업구조</a></li>
+                   <li><a href="index.html">투자정보</a></li>
+                   <li><a href="index.html">지속가능한 경영</a></li>
+                   <li><a href="index.html">뉴스룸</a></li>
+                </ul>
+            </div>
+            <div class="footbox">
+                <h4>고객 지원</h4>
+                <ul>
+                    <li><a href="index.html">공지사항</a></li>
+                    <li><a href="index.html">자주 묻는 질문</a></li>
+                    <li><a href="index.html">서비스센터</a></li>
+                    <li><a href="index.html">웹 접근성</a></li>
+                </ul>
+            </div>
+            <div class="footbox">
+                <h4>약관 및 규정</h4>
+                <ul>
+                    <li><a href="index.html">개인정보 처리방침</a></li>
+                    <li><a href="index.html">이용 약관</a></li>
+                    <li><a href="index.html">운송약관 및 고지사항</a></li>
+                    <li><a href="index.html">소비자 안전 관련 정보</a></li>
+                    <li><a href="index.html">운임 및 서비스 요금표</a></li>
+                </ul>
+            </div>
+            <div class="footbox">
+                <h4>기타 안내사항</h4>
+                <ul>
+                    <li><a href="index.html">고객 안내 서비스</a></li>
+                    <li><a href="index.html">항공교통이용자 안내</a></li>
+                    <li><a href="index.html">관련 사이트</a></li>
+                    <li><a href="index.html">사이트 맵</a></li>
+                    <li><a href="index.html">초등학생 견학 신청</a></li>
+                </ul>
+            </div>
+            <div id="footercon">
+                <ul>
+                    <li><a href="index.html"><img src="img/youtube.png" alt="유튜브"></a></li>
+                    <li><a href="index.html"><img src="img/insta.png" alt="인스타"></a></li>
+                    <li><a href="index.html"><img src="img/facebook.png" alt="페이스북"></a></li>
+                    <li><a href="index.html"><img src="img/twitter.png" alt="트위터"></a></li>
+                </ul>
+                <div id="footbtn">
+                    <div class="appbtn a_1">
+                       <a href="index.html"><img src="img/google.png" alt="구글">
+                        <span class="goo1">Get it on</span>
+                        <span class="goo2">Google Play</span></a>
+                    </div>
+                    <div class="appbtn a_2">
+                       <a href="index.html"><img src="img/apple.png" alt="애플">
+                        <span class="ap1">Download on the</span>
+                        <span class="ap2">App Store</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </footer>
+    <script src="js/subpage.js"></script>
+    <script src="js/reset.js"></script>
+</body>
+</html>

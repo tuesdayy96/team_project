@@ -1,0 +1,114 @@
+@charset "utf-8";
+
+@font-face {
+    font-family: 'S-CoreDream-7ExtraBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-7ExtraBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+     font-family: 'S-CoreDream-5Medium';
+     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-5Medium.woff') format('woff');
+     font-weight: normal;
+     font-style: normal;
+}
+@font-face {
+     font-family: 'S-CoreDream-3Light';
+     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+     font-weight: normal;
+     font-style: normal;
+}
+.navtap{
+    background-color: #6d6e70;
+}
+.navtap ul{
+    width: 1200px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+    margin: 0 auto;
+}
+.navtap ul li{
+    margin: 3px 7px;
+    color: #eee; font-size: large;
+}
+
+     * {padding: 0; box-sizing: border-box; text-decoration: none;}
+
+    ul{list-style-type: none; margin: 1px; padding: 0;}
+    
+    b{font-family:'S-CoreDream-7ExtraBold';}
+    
+
+    small{ font-size: 11px; opacity: 0.7;}
+    h3{font-family:'S-CoreDream-7ExtraBold'; color: #002940; font-size: 24px;}
+
+    nav {width:100%; height: 180px;  padding: 15px; font-family:'S-CoreDream-7ExtraBold'; display: flex; align-items: center;
+}
+   nav ul{width: 1200px; height: 30px; margin: 5px auto; display: flex; justify-content: center;}
+   nav ul li { padding: 0px; font-size: 17px; margin: 0;}
+   nav li:nth-of-type(3), nav li:nth-of-type(4), nav li:nth-of-type(5){color:#aec2ce ;}
+   nav li:nth-of-type(3) span,nav li:nth-of-type(4) span,nav li:nth-of-type(5) span{background-color: #aec2ce;}
+   
+
+
+    
+    nav span{background-color: #002940; color: aliceblue; border-radius: 50px; padding: 3px 9px; margin: 0 20px;}
+
+    #aviation span{margin: 0 10px;}
+
+    #aviation{width: 100%; height: 100%; background-color: #e8e8e8; 
+            position:-webkit-sticky; position: sticky; top: 0;  justify-content: space-between; margin: 0 auto;}
+
+    #aviation button {float: right; font-size: 12px; background-color: #e8e8e8; 
+            border:none; text-decoration: underline; cursor: pointer; margin: 5px;}            
+    #aviation> p {background-color: #002940; color: aliceblue; padding: 7px; font-family:'S-CoreDream-7ExtraBold'; width: 100%;}
+    #aviation li {margin: 3px;}
+    #aviation a, #persnal_info a {font-size: 15px;}
+   
+    
+    .box_align{width: 1200px; height: 155px; display: flex;  justify-content: space-around; margin:0 auto;
+       }
+        
+    .box_1{width: 350px; height: 140px; display: flex; justify-content: space-around; align-items: flex-end; margin: 10px;}
+    
+    .inner_box {width: 115px;}
+    .inner_box_f{width: 60px; text-align: center;}
+    .inner_box li:nth-of-type(2){color: darkblue; font-size: 25px; font-family:'S-CoreDream-7ExtraBold';}
+    .inner_box1{width: 115px; height: 70px;}
+    #box_align2{width: 1200px; height: 100%; display: flex;}
+    #box_align3{width: 1200px; height: 100%; display: flex; align-items: flex-start; justify-content: space-around; 
+        margin:0 auto;}
+    .box_2{width: 350px; height: 100px;display: flex; justify-content: space-around;}
+    .box_3{width: 350px;}
+    .box_b{width: 350px; height: 100%;}
+    .box_b li:nth-of-type(4){padding: 5px;}
+    #av_2{display: none; margin:0 auto;}
+
+    #persnal_info {background-color: lightblue; width: 800px; height: 100%; margin: 130px auto; padding: 50px;}
+
+    .passenger_info{width: 900px; margin: 0px auto;}
+    .passenger_info span {background-color: #710211; color: aliceblue; padding: 0px 3.5px; font-size: 12px;}
+    .passenger_info td {padding: 15px 30px;}
+    .passenger_info p, .passenger_info h3, .passenger_info h4, .passenger_info h6 {padding: 5px 25px;}
+
+    .passenger_info table {width: 800px;}
+    .passenger_info input,.passenger_info select {border: none; box-shadow:0px 0.5px 0px #002940; height: 30px;}
+    .passenger_info h4 {font-size: 21px;}
+    .passenger_info h6 {font-size: 15px;}
+    
+
+    #yell_box {width: 800px; height: 260px; padding: 50px; margin: 150px  auto; background-color: #e8e8e8;}
+   
+    #notice {width: 850px; height: 150px; margin:0 auto;}
+    .check{opacity: 0;}
+    input[type="checkbox"]:checked ~ .check{opacity: 1;}
+
+    #next{width: 1000px; height: 100px; margin: 150px auto; display: flex; justify-content: flex-end; }
+    #next input {width: 100px; height: 45px; padding: 5px; font-size: 17px; text-align: center;
+        background-color: #e8e8e8; color: #002940; cursor: pointer; margin: 5px; 
+         font-family:'S-CoreDream-7ExtraBold'; border: none;}
+    #next input:nth-of-type(1) {border-top-left-radius: 10px; border-bottom-left-radius: 10px;}
+    #next input:nth-of-type(2) {border-top-right-radius: 10px; border-bottom-right-radius: 10px;}
+    #next input:hover {background-color: #002940; color: aliceblue;}
