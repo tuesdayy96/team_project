@@ -445,6 +445,15 @@ function makeCalender(){
             var currentMonthDate = document.querySelectorAll('.dates .current');
             currentMonthDate[todayDate-1].classList.add('today');
         }
+        // 날짜 선택
+        var sel_Date = $('.dates .current');
+        sel_Date.click(function(){
+            var month = $('.year_month').text();
+            var da_te = $(this).text();
+            $('#day_calender').html(month +' '+ da_te + '일');
+            $(opencal).hide();
+        });
+        // --------------------
     }
     // 지난달로 이동
     document.querySelector('.go-prev').onclick = function(){
@@ -467,18 +476,6 @@ function open_cal(){
 function close_cal(){
     opencal.style.display = 'none';
 }
-
-// 날짜 선택
-var sel_Date = $('.dates .current');
-
-    sel_Date.click(function(){
-        var month = $('.year_month').text();
-        var da_te = $(this).text();
-        $('#day_calender').html(month +' '+ da_te + '일');
-        $(opencal).hide();
-    });
-// --------------------
-
 
 // 정보조회 결과
 const flinfo = document.getElementById('flight_info');
